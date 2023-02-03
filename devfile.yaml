@@ -1,7 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
-  # name: python-scala
-  generateName: empty
+  name: python-scala
 components:
   - name: devtools
     container:
