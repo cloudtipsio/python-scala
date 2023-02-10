@@ -18,9 +18,9 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
+
   - name: m2
-    volume:
-      size: 1G
+    volume: {}
 
   - name: redis
     container:
