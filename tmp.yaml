@@ -1,0 +1,33 @@
+schemaVersion: 2.1.0
+metadata:
+  name: mbk
+components:
+  - name: devtools
+    container:
+      image: docker.io/cloudtips/mbk:latest
+      memoryLimit: 3Gi
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
+          targetPort: 8080
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+  - name: m2
+    volume:
+      size: 1G
+
+  - name: redis
+    container:
+      image: redis:5-alpine
+      memoryLimit: 250Mi
+      endpoints:
+        - exposure: none
+          name: redis
+          protocol: tcp
+          targetPort: 6379
